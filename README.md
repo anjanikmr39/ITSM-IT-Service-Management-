@@ -85,20 +85,25 @@ the IT infrastructure that is managed in the context of IT Service Management.
 ### **Analysis for Categorical data:**
 
 1) For CI_Cat graph, it is not an ordinal data so we have to perform one hot encoding in preprocessing.
+
 ![image](https://github.com/anjanikmr39/ITSM-IT-Service-Management-/assets/67219753/957c62a9-4673-4342-9645-cf04b6debf75)
 
 2) For CI_Subcat graph, it is not an ordinal data so we have to perform one hot encoding in preprocessing.
+
 ![image](https://github.com/anjanikmr39/ITSM-IT-Service-Management-/assets/67219753/920631cd-534c-42da-82d0-238d3e0947b7)
 
-3) For Status graph, all new user data will come under work in progress, so there is no meaning to keep that feature.
-4) Impact and Urgency have proportional relationship with Priority.
-5) For Impact and Urgency, it have high correlation with Priority so we have to drop these features.
+4) For Status graph, all new user data will come under work in progress, so there is no meaning to keep that feature.
+5) Impact and Urgency have proportional relationship with Priority.
+6) For Impact and Urgency, it have high correlation with Priority so we have to drop these features.
+
 ![image](https://github.com/anjanikmr39/ITSM-IT-Service-Management-/assets/67219753/e17a64d4-8742-48d0-ad96-119841b4c2bd)
 
-6) For Category graph, it is not an ordinal data so we have to perform one hot encoding in preprocessing.
+7) For Category graph, it is not an ordinal data so we have to perform one hot encoding in preprocessing.
+
 ![image](https://github.com/anjanikmr39/ITSM-IT-Service-Management-/assets/67219753/234d7a17-668b-4d24-ad9d-b737bc83b231)
 
-7) For Closure_Code graph, it is not an ordinal data so we have to perform one hot encoding in preprocessing.
+8) For Closure_Code graph, it is not an ordinal data so we have to perform one hot encoding in preprocessing.
+
 ![image](https://github.com/anjanikmr39/ITSM-IT-Service-Management-/assets/67219753/5ed9d558-54ca-4f6e-9cb3-6bfc0379c65e)
 
 ----------------
@@ -106,21 +111,36 @@ the IT infrastructure that is managed in the context of IT Service Management.
 
 1) Open_Time, Resolved_Time and Close_Time have almost uniform distribution with time zone.
 2) We re-created Handle_Time_hrs from Open_Time and Resolved_Time that's why we do no need these three time features.
+
 ![image](https://github.com/anjanikmr39/ITSM-IT-Service-Management-/assets/67219753/4e2c7473-dfa1-45df-b500-c8cb2159bc3b)
 
 
 3) As No_of_Reassignments increase, Priority also increases means they have directly proportional to each other.
 4) As No_of Related_Interactions decrease, Priority increases means they have inversely proportional to each other.
+
 ![image](https://github.com/anjanikmr39/ITSM-IT-Service-Management-/assets/67219753/ff73d808-9797-4968-9156-6c4d1f87b574)
 
 5) Handle_Time_hrs have very good relation with Priority as it increases with Priority from 2 to 5.
+
 ![image](https://github.com/anjanikmr39/ITSM-IT-Service-Management-/assets/67219753/ce492cd2-2e8e-43bd-b3fd-43e59e13e636)
 
 ---------
 
 ## **Model Comparison Report (Predicting High Priority Tickets)**
 
-![image](https://github.com/anjanikmr39/ITSM-IT-Service-Management-/assets/67219753/06415b47-6b76-4d2a-bba3-40ff9c4b2682)
+```
++-------------------+----------------------------+---------------------------+
+| Model Name        |   Before Hyperparameter(%) | After Hyperparameter(%)   |
++===================+============================+===========================+
+| Decision Tree     |                      67.48 | 73.1                      |
++-------------------+----------------------------+---------------------------+
+| Random Forest     |                      69.6  | 74.94                     |
++-------------------+----------------------------+---------------------------+
+| Gradient Boosting |                      74.59 | NA                        |
++-------------------+----------------------------+---------------------------+
+
+```
+
 
 **For Random Forest**
 ![image](https://github.com/anjanikmr39/ITSM-IT-Service-Management-/assets/67219753/5e35cbff-dd40-40cc-87f1-77d6c305c1a1)
