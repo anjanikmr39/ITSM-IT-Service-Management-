@@ -201,4 +201,4 @@ Model Comparison Report (Auto tag the tickets with right priorities and right de
 -------
 
 ## **More information**
-Visit this python file for more detailed analysis [EquakeDamagePred.ipynb](https://github.com/anjanikmr39/EarthQuake-Damage-Prediction/blob/master/EquakeDamagePred.ipynb).
+Visit this python file for more detailed analysis [ITSM.ipynb](https://github.com/anjanikmr39/ITSM-IT-Service-Management-/blob/master/ITSM.ipynb)
