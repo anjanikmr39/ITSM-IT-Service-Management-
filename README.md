@@ -122,39 +122,12 @@ the IT infrastructure that is managed in the context of IT Service Management.
 
 ![image](https://github.com/anjanikmr39/ITSM-IT-Service-Management-/assets/67219753/06415b47-6b76-4d2a-bba3-40ff9c4b2682)
 
--------------------
-
 **For Random Forest**
 ![image](https://github.com/anjanikmr39/ITSM-IT-Service-Management-/assets/67219753/5e35cbff-dd40-40cc-87f1-77d6c305c1a1)
 
 --------------
 
-## **Forecasting Incidents Monthwise and Quaterwise:**
-
-
-1) We take dataset as table directly from SQL.
-
-2) We need (CI_Cat, Open_Time) features for forecasting of Incidents.
-
-3) In open Time feature we have datetime in this format (dd-mm-yyyy hr:min), so we converted it into (yyyy-mm-dd).
-
-4) We need monthwise forcasting so we converted 46606 rows into 34 rows based on category and incidents using groupby and after that we have monthwise with Incidents of year (2012,2013,2014).
-
-5) From ACF plot we analyse that dataset is not stationary, and we need differencing to make it stationary.
-
-6) Since 2012 have very much low incidents in range (1 to 6) compared to 2013,2014 years where incidents range (700 to 6100), so we have to remove 10 rows of 2012 years, because it will acts as an outliers and disrupt the forecasting.
-
-7) Model ARIMA(AutoRegressive Integrated Moving Average) we applied with hyperparameter to find (p,d,q) by making different combinations, and we got best parameter (p,d,q):(2, 1, 4) with 1 differencing to make it stationary and applied it into ARIMA model.
-
-8) We got Monthwise prediction of incidents from (01-01-2015 to 01-06-2015) with good graph and results.
-
-9) Now we will Predict Quarter wise incidents and for that we make 8 rows based on 24 rows present in 2013 and 2014 years from monthwise.
-
-10) From ACF plot we analyse dataset is stationary, so we do not need differencing.
-
-11) Model  ARIMA(AutoRegressive Integrated Moving Average) we applied with hyperparameter to find (p,d,q) by making different combinations, and we got best parameter (p,d,q):(2, 0, 2) with 0 differencing and applied it into ARIMA model.
-
-12) We got Quarterwise prediction of incidents for (2015-03-31,2015-06-30,2015-09-30) with good graph and results.
+## **Forecasting Incidents Monthwise and Quaterwise using ARIMA Model**
 
 ```
 Next 6 Monthwise Prediction of Incidents:
@@ -164,15 +137,23 @@ Next 6 Monthwise Prediction of Incidents:
 2015-04-01     686.779352
 2015-05-01     460.035020
 2015-06-01     376.535520
+```
 
+![image](https://github.com/anjanikmr39/ITSM-IT-Service-Management-/assets/67219753/88d332a2-3f9c-4f0e-a8d1-903f74df5de2)
+
+
+```
 Next 3 Quarterwise Prediction of Incidents:
 2015-03-31    16193.964191
 2015-06-30    14089.153918
 2015-09-30     3120.236192
 ```
 
+![image](https://github.com/anjanikmr39/ITSM-IT-Service-Management-/assets/67219753/7b379180-b3ca-437f-b431-8294fe293930)
 
-## **Auto Tag the Tickets with right Priorities and right Departments:**
+------------
+
+## **Auto Tag the Tickets with right Priorities and right Departments**
 
 
 1) We only requires (CI_Cat, CI_Subcat, Priority, Category, No_of_Reassignments, Handle_Time_hrs, Closure_Code, No_of_Related_Interactions) for Auto Tag.
@@ -185,11 +166,6 @@ Next 3 Quarterwise Prediction of Incidents:
 
 5) We have to scale entire dataset between 0 to 1 that is MinMAx scaling because Handle_Time_hrs feature should not goes below zero.
 
-6) In Model creation, we apply Decision Tree, but it is overfitted since training accuracy is 94% while testing accuracy is 83%. So we will apply Hyperparameter, and after that we got 82% testing accuracy and 85% training accuracy.
-
-7) In Model creation, we apply Random Forest, but it is overfitted since training accuracy is 94% while testing accuracy is 83%. So we will apply Hyperparameter, and after that we got 83% testing accuracy and 85% training accuracy.
-
-8) In Model creation, we apply Gradient Boosting, and it have testing accuracy of 84.08% and training accuracy of 84.36%, so we don't need Hyperparameter.
 
 ```
 Model Comparison Report (Auto tag the tickets with right priorities and right departments):
@@ -203,6 +179,11 @@ Model Comparison Report (Auto tag the tickets with right priorities and right de
 | Gradient Boosting |                      84.08 | NA                        |
 +-------------------+----------------------------+---------------------------+
 ```
+
+**For Gradient Boosting**
+
+![image](https://github.com/anjanikmr39/ITSM-IT-Service-Management-/assets/67219753/ebeeff3f-c2f8-4424-a342-4f364875942f)
+
 -------
 
 ## **Challenges Faced:**
